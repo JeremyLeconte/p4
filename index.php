@@ -53,7 +53,7 @@ if (array_key_exists('page', $_REQUEST)&& $_REQUEST['page']== 'login') {
             break;
             case "insertArticle":
                 if (array_key_exists('isLoggedIn', $_SESSION) && $_SESSION['isLoggedIn'] == true) {
-                    $articles=$ArticleController->insertArticle($postId);
+                    $articles=$ArticleController->insertArticle();
                 } else {
                     header("Location: ./index.php?page=logginIn");
                 }   
