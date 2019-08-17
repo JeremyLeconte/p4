@@ -26,19 +26,16 @@ class LoginController {
             
         //récupération depuis la bdd du password correspondant au login 
         
-        var_dump('login 1');
+        
         if(isset($_POST["login"]) && isset($_POST["pass"])){
-            var_dump('login 2');    
+                
             
-            $hashPassword = $this->LoginManager->getBylogin($login);
-
-            var_dump($hashPassword);  
+            $hashPassword = $this->LoginManager->getBylogin($login); 
 
             // comparaison des deux mdp
             
             if (password_verify($pass, $hashPassword)){
 
-                var_dump('login 3'); 
 
             // si concordance --> remplir notre $_SESSION is logged in                                   
                 
@@ -50,7 +47,7 @@ class LoginController {
                 <?php
             
             } else {
-                var_dump('login 4');
+
                 ?>
                 <script language='Javascript'>alert("Mot de passe incorrect" );
                 location.href = "index.php?page=logginIn";

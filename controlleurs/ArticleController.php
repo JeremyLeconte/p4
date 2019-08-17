@@ -56,12 +56,25 @@ class ArticleController {
             header('Location: index.php?page=article&id='.$article);
         }
     }
+    public function saveNewArticle(){
+        
+        $Title = $_POST['Title'];
+        $Content = $_POST['Content'];
+        $affectedLines = $this->ArticleManager->saveNewArticle($Title, $Content);
+    
+        if($affectedLines === false) {
+            die("Impossible de modifier l'article");
+        }
+    
+        else {
+            header('Location: index.php?page=article&id='.$article);
+        }
+    }
     public function insertArticle(){
 
         require_once('./vues/AdminInsertArticle.php');
     }
     public function deleteArticle($postId){
-        var_dump($postId);
         $this->ArticleManager->deleteArticle($postId);
         header('Location: index.php?page=InterfaceAdmin');
     }
