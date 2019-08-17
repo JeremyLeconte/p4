@@ -9,7 +9,7 @@ class ArticleManager {
     // Requete SQL
         try
         {
-            $bdd = new PDO('mysql:host=localhost1;port=3308;dbname=blog;charset=utf8', 'root', '');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {
@@ -37,7 +37,7 @@ class ArticleManager {
         // Requete SQL
         try
         {
-            $bdd = new PDO('mysql:host=localhost1;port=3308;dbname=blog;charset=utf8', 'root', '');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {
@@ -56,7 +56,7 @@ class ArticleManager {
         // Requete SQL
         try
         {
-            $bdd = new PDO('mysql:host=localhost1;port=3308;dbname=blog;charset=utf8', 'root', '');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {
@@ -85,7 +85,7 @@ class ArticleManager {
          // Requete SQL
         try
         {
-            $bdd = new PDO('mysql:host=localhost1;port=3308;dbname=blog;charset=utf8', 'root', '');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {
@@ -111,7 +111,27 @@ class ArticleManager {
         
         try
         {
-            $bdd = new PDO('mysql:host=localhost1;port=3308;dbname=blog;charset=utf8', 'root', '');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
+        }
+        catch(Exception $e)
+        {
+            die('Erreur : '.$e->getMessage());
+        }
+        $query = 'UPDATE articles SET title= :title, content= :content WHERE id= :id';
+        $req = $bdd->prepare($query);
+
+        $affectedLines = $req->execute(array(
+            'id'=> $postId,
+            'title'=> $postTitle, 
+            'content'=> $postContent));
+
+        return $affectedLines;
+    }
+    public function saveNewArticle($postTitle, $postContent){
+        
+        try
+        {
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {
@@ -122,9 +142,9 @@ class ArticleManager {
         $req = $bdd->prepare($query);
 
         $affectedLines = $req->execute(array(
-            'id'=> $postId,
-            'Title'=> $postTitle, 
-            'Content'=> $postContent));
+
+            'title'=> $postTitle, 
+            'content'=> $postContent));
 
         return $affectedLines;
     }
@@ -132,7 +152,7 @@ class ArticleManager {
         
         try
         {
-            $bdd = new PDO('mysql:host=localhost1;port=3308;dbname=blog;charset=utf8', 'root', '');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {
@@ -153,7 +173,7 @@ class ArticleManager {
 
         try
         {
-            $bdd = new PDO('mysql:host=localhost1;port=3308;dbname=blog;charset=utf8', 'root', '');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {

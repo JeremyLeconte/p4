@@ -9,7 +9,7 @@ class CommentManager {
     // Requete SQL
         try
         {
-            $bdd = new PDO('mysql:host=localhost1;port=3308;dbname=blog;charset=utf8', 'root', '');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {
@@ -39,7 +39,7 @@ class CommentManager {
         
         try
         {
-            $bdd = new PDO('mysql:host=localhost1;port=3308;dbname=blog;charset=utf8', 'root', '');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {
@@ -63,7 +63,7 @@ class CommentManager {
         
         try
         {
-            $bdd = new PDO('mysql:host=localhost1;port=3308;dbname=blog;charset=utf8', 'root', '');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {
@@ -87,7 +87,7 @@ class CommentManager {
         
         try
         {
-            $bdd = new PDO('mysql:host=localhost1;port=3308;dbname=blog;charset=utf8', 'root', '');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {
@@ -106,7 +106,7 @@ class CommentManager {
        // Requete SQL
        try
        {
-           $bdd = new PDO('mysql:host=localhost1;port=3308;dbname=blog;charset=utf8', 'root', '');
+           $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
        }
        catch(Exception $e)
        {
@@ -131,7 +131,7 @@ class CommentManager {
     // Requete SQL
     try
     {
-        $bdd = new PDO('mysql:host=localhost1;port=3308;dbname=blog;charset=utf8', 'root', '');
+        $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
     }
     catch(Exception $e)
     {
@@ -160,7 +160,7 @@ class CommentManager {
 
         try
         {
-            $bdd = new PDO('mysql:host=localhost1;port=3308;dbname=blog;charset=utf8', 'root', '');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {
