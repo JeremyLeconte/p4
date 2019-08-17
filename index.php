@@ -18,8 +18,6 @@ require_once('./controlleurs/LoginController.php');
 $ArticleController = new ArticleController();
 $CommentController = new CommentController();
 $LoginController = new LoginController();
-var_dump($_SESSION);
-var_dump($_REQUEST);
 // Vérification du paramètre d'url
 if (array_key_exists('page', $_REQUEST)&& $_REQUEST['page']== 'login') {
     $LoginController->login();
@@ -62,6 +60,13 @@ if (array_key_exists('page', $_REQUEST)&& $_REQUEST['page']== 'login') {
                 if (array_key_exists('isLoggedIn', $_SESSION) && $_SESSION['isLoggedIn'] == true) {
                     $id = RouterHelper::recupererID($_GET);
                     $ArticleController->saveArticle($id);
+                } else {
+                    header("Location: ./index.php?page=logginIn");
+                }   
+                break;
+            case "saveNewArticle":
+                if (array_key_exists('isLoggedIn', $_SESSION) && $_SESSION['isLoggedIn'] == true) {
+                    $ArticleController->saveNewArticle();
                 } else {
                     header("Location: ./index.php?page=logginIn");
                 }   
