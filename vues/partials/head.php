@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description" content="Blog de Jean Forteroche, Billet simple pour l'Alaska">
+  <meta name="author" content="Jérémy Leconte">
 
   <title>Jean Forteroche - Billet Simple pour l'Alaska</title>
 

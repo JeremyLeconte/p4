@@ -14,9 +14,6 @@
             <a class="nav-link" href="index.php">Accueil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.php">A propos</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="index.php?page=logginIn">Login</a>
           </li>
         </ul>
