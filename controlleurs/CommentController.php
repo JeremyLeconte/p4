@@ -14,8 +14,8 @@ class CommentController {
         
     public function addComment($postId) {
 
-        $name = $_POST['name'];
-        $content = $_POST['content'];
+        $name = htmlspecialchars($_POST['name']);
+        $content = htmlspecialchars($_POST['content']);
         $affectedLines = $this->CommentManager->addComment($postId, $name, $content);
     
         if($affectedLines === false) {
@@ -51,8 +51,8 @@ class CommentController {
     }
     public function saveComment($postId){
         
-        $name = $_POST['name'];
-        $content = $_POST['content'];
+        $name = htmlspecialchars($_POST['name']);
+        $content = htmlspecialchars($_POST['content']);
         $affectedLines = $this->CommentManager->saveComment($postId, $name, $content);
     
         if($affectedLines === false) {
