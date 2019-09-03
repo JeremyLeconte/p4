@@ -9,7 +9,7 @@ class CommentManager {
     // Requete SQL
         try
         {
-            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_p4;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {
@@ -17,9 +17,11 @@ class CommentManager {
         }
         $query = 'SELECT Id, Name, Content, articleId, DATE_FORMAT(Date, \'%d/%m/%Y\') AS date ';
         $query = $query . 'FROM commentaires ';
-        $query = $query . 'WHERE articleId = ' . $article;
+        //$query = $query . 'WHERE articleId = ' . $article;
+        $query = $query . 'WHERE articleId = ?';
         $query = $query . ' ORDER BY Id DESC ';
-        $req = $bdd->query($query);
+        $req = $bdd->prepare($query);
+        $req->execute(array($article));
         
         // ------
         $Comments = array();
@@ -39,7 +41,7 @@ class CommentManager {
         
         try
         {
-            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_p4;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {
@@ -63,7 +65,7 @@ class CommentManager {
         
         try
         {
-            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_p4;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {
@@ -87,7 +89,7 @@ class CommentManager {
         
         try
         {
-            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_p4;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {
@@ -106,7 +108,7 @@ class CommentManager {
        // Requete SQL
        try
        {
-           $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
+           $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_p4;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
        }
        catch(Exception $e)
        {
@@ -131,7 +133,7 @@ class CommentManager {
     // Requete SQL
     try
     {
-        $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
+        $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_p4;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
     }
     catch(Exception $e)
     {
@@ -139,9 +141,11 @@ class CommentManager {
     }
     $query = 'SELECT Id, Name, Content, articleId, DATE_FORMAT(Date, \'%d/%m/%Y à %Hh%imin%ss\') AS date ';
     $query = $query . 'FROM commentaires ';
-    $query = $query . 'WHERE Id = '.$id;
-    $req = $bdd->query($query);
-    
+    $query = $query . 'WHERE Id = ?';
+    $req = $bdd->prepare($query);
+    $req->execute(array($id));
+
+     
     // ------
     $commentBdd = $req->fetch(PDO::FETCH_ASSOC);
 
@@ -160,7 +164,7 @@ class CommentManager {
 
         try
         {
-            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_p4;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {

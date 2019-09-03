@@ -9,7 +9,7 @@ class ArticleManager {
     // Requete SQL
         try
         {
-            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_p4;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {
@@ -17,7 +17,7 @@ class ArticleManager {
         }
         $query = 'SELECT ID, title, content, DATE_FORMAT(date_post, \'%d/%m/%Y à %Hh%i\') AS date_post_fr ';
         $query = $query . 'FROM articles ';
-        $query = $query . 'ORDER BY ID DESC ';
+        $query = $query . 'ORDER BY ID ';
         $query = $query . 'LIMIT '.(($page - 1) * 5).', 5';
         $req = $bdd->query($query);
         
@@ -37,7 +37,7 @@ class ArticleManager {
         // Requete SQL
         try
         {
-            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_p4;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {
@@ -56,7 +56,7 @@ class ArticleManager {
         // Requete SQL
         try
         {
-            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_p4;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {
@@ -64,8 +64,9 @@ class ArticleManager {
         }
         $query = 'SELECT ID, title, content, DATE_FORMAT(date_post, \'%d/%m/%Y à %Hh%imin%ss\') AS date_post_fr ';
         $query = $query . 'FROM articles ';
-        $query = $query . 'WHERE ID = '.$id;
-        $req = $bdd->query($query);
+        $query = $query . 'WHERE ID = ?';
+        $req = $bdd->prepare($query);
+        $req->execute(array($id));
         
         // ------
         $articleBdd = $req->fetch(PDO::FETCH_ASSOC);
@@ -85,7 +86,7 @@ class ArticleManager {
          // Requete SQL
         try
         {
-            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_p4;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {
@@ -111,7 +112,7 @@ class ArticleManager {
         
         try
         {
-            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_p4;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {
@@ -131,7 +132,7 @@ class ArticleManager {
         
         try
         {
-            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_p4;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {
@@ -152,7 +153,7 @@ class ArticleManager {
         
         try
         {
-            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_p4;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {
@@ -173,7 +174,7 @@ class ArticleManager {
 
         try
         {
-            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_wp1;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
+            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_p4;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
         }
         catch(Exception $e)
         {
