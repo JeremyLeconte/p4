@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="./vues/styles/css/clean-blog.css">
-        <title>Document</title>
-    </head>
+<?php require_once('./vues/partials/head.php'); ?>
     <body>
     <!-- TABLEAU-->
         <div class="tg-wrap">
@@ -26,11 +18,11 @@
                             <td class="tg-0lax"><?= nl2br(htmlspecialchars(substr($Comment->getContent(), 0, 50))); ?></td>
                             <td class="tg-0lax"><?= $Comment->getdate(); ?></td>
                             <td class="tg-0lax">
-                                <a href=<?='index.php?page=editComment&id=' .$Comment->getId() ?>>
+                                <a href="<?='index.php?page=editComment&id=' .$Comment->getId() ?>">
                                     <img src="./img/pencilmono_105944.png" class="modifier" alt="modifier"/>
                                 </a>
                                 &nbsp;
-                                <a href=<?='index.php?page=deleteComment&id=' .$Comment->getId() ?>>
+                                <a href="<?='index.php?page=deleteComment&id=' .$Comment->getId() ?>">
                                     <img src="./img/3844425-can-trash_110314.png" class="effacer "alt="effacer"/>
                                 </a>
                             </td>

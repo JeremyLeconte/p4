@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="./vues/styles/css/clean-blog.css">
-        <title>Document</title>
-    </head>
-    <body>
+<?php require_once('./vues/partials/head.php'); ?>
+<?php require_once('./vues/partials/nav.php'); ?>
+<?php require_once('./vues/partials/header.php'); ?>
+    <?php error_reporting(E_ALL); ?> 
+    <?php ini_set('display_errors', 1); ?>    
         <form action="index.php?page=login" method="post">
             <table align="center" border="0">
                 <tr>
@@ -23,5 +18,4 @@
                 </tr>
             </table>
         </form> 
-    </body>
-</html>
+        <?php require_once('./vues/partials/footer.php'); ?>

@@ -20,7 +20,7 @@
                                 <br /><?= htmlspecialchars($article->getTitle()); ?><em> : </em>                                           
                             </h3>
                                 <p>
-                                    <?= nl2br(htmlspecialchars(substr($article->getContent(), 0, 200))); ?> <em><a href=<?='index.php?page=article&id='.$article->getID() ?>>...[lire la suite]</a></em>                       
+                                    <?= nl2br(htmlspecialchars(substr($article->getContent(), 0, 200))); ?> <em><a href="<?='index.php?page=article&id='.$article->getID() ?>">...[lire la suite]</a></em>                       
                                     <br />
                                 </p>
                         </article>
@@ -39,7 +39,7 @@
             for ($i=1; $i < $nbPages + 1; $i++)
             { 
             ?> 
-                <li class="page-item"><a class="page-link" href=<?= "index.php?page=accueil&pageIx=".$i ?>><?= $i ?></a></li>
+                <li class="page-item"><a class="page-link" href="<?= "index.php?page=accueil&pageIx=".$i ?>"><?= $i ?></a></li>
             <?php
             }
             ?>
@@ -47,11 +47,6 @@
     </nav>
     <hr />
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="./vendor/jquery/jquery.min.js"></script>
-    <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Custom scripts for this template -->
-    <script src="./js/clean-blog.min.js"></script>
 <?php require_once('./vues/partials/footer.php'); ?>
 

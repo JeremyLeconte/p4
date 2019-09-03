@@ -60,7 +60,7 @@
                                     <br />
                                 </p>
                                 <div>
-                                    <a href= <?='index.php?page=signal&id=' .$Comment->getId() ?>><img src="./img/signal.png" class="signaler" alt="signaler"/>Signaler</a>
+                                    <a href= "<?='index.php?page=signal&id=' .$Comment->getId() ?>"><img src="./img/signal.png" class="signaler" alt="signaler"/>Signaler</a>
                                 </div>
                                 <br />
                             </article>
