@@ -6,11 +6,12 @@ class LoginController {
 
     public function __construct() {
         $this->LoginManager = new LoginManager();
-    
+
     }
-    public function logginIn() {       
-        
-        require_once('./vues/login.php');
+
+    public function toto() {               
+
+        require_once('./vues/Login.php');
     }
     
     function isLoggedIn() {
@@ -21,8 +22,8 @@ class LoginController {
 
         //recupération du login et du password via la methode posst
 
-            $login = $_POST['login'];
-            $pass = $_POST['pass'];
+            $login = htmlspecialchars($_POST['login']);
+            $pass = htmlspecialchars($_POST['pass']);
             
         //récupération depuis la bdd du password correspondant au login 
         
