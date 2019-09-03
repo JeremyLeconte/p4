@@ -2,7 +2,7 @@
 
 session_start();
 ob_start();
-
+ini_set('display_errors', 1);
 /*
  * Fichier      : index.php
  * Description  : routeur de l'application PHP
@@ -125,8 +125,8 @@ if (array_key_exists('page', $_REQUEST)&& $_REQUEST['page']== 'login') {
                     header("Location: ./index.php?page=logginIn");
                 }            
                 break;
-            case "logginIn":              
-                $LoginController->logginIn();            
+            case "toto":              
+                $LoginController->toto();            
                 break;
             case 'addComment' :
                 $id = RouterHelper::recupererID($_GET);
