@@ -4,46 +4,33 @@ require_once('./modeles/Article.php');
 
 class ArticleManager {
 
-    public function getArticles($page = 2) {
+    public function __construct($bdd) {
+        $this->bdd = $bdd;
+    }
 
-    // Requete SQL
-        try
-        {
-            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_p4;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
-        }
-        catch(Exception $e)
-        {
-            die('Erreur : '.$e->getMessage());
-        }
+    public function getArticles($page = 2) {
+        
+          
         $query = 'SELECT ID, title, content, DATE_FORMAT(date_post, \'%d/%m/%Y à %Hh%i\') AS date_post_fr ';
         $query = $query . 'FROM articles ';
         $query = $query . 'ORDER BY ID ';
         $query = $query . 'LIMIT '.(($page - 1) * 5).', 5';
-        $req = $bdd->query($query);
-        
+        $req = $this->bdd->query($query);
+            
         // ------
         $articles = array();
-
         // Hydratation
-        
+            
         while($data=$req->fetch(PDO::FETCH_ASSOC)) {
             $articles[] = new Article($data);
         }
-
         return $articles;
     }
 
     public function getPagesCount() {
-        // Requete SQL
-        try
-        {
-            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_p4;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
-        }
-        catch(Exception $e)
-        {
-            die('Erreur : '.$e->getMessage());
-        }
-        $req = $bdd->query('SELECT COUNT(*) as nb_articles FROM articles ');
+        
+     
+        $req = $this->bdd->query('SELECT COUNT(*) as nb_articles FROM articles ');
 
         $nbArticles = intval($req->fetch()['nb_articles']);
 
@@ -53,19 +40,12 @@ class ArticleManager {
     }
 
     public function getById($id) {
-        // Requete SQL
-        try
-        {
-            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_p4;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
-        }
-        catch(Exception $e)
-        {
-            die('Erreur : '.$e->getMessage());
-        }
+        
+
         $query = 'SELECT ID, title, content, DATE_FORMAT(date_post, \'%d/%m/%Y à %Hh%imin%ss\') AS date_post_fr ';
         $query = $query . 'FROM articles ';
         $query = $query . 'WHERE ID = ?';
-        $req = $bdd->prepare($query);
+        $req = $this->bdd->prepare($query);
         $req->execute(array($id));
         
         // ------
@@ -83,19 +63,11 @@ class ArticleManager {
         return [$article, $error];
     }
     public function getAll() {
-         // Requete SQL
-        try
-        {
-            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_p4;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
-        }
-        catch(Exception $e)
-        {
-            die('Erreur : '.$e->getMessage());
-        }
+        
         $query = 'SELECT ID, title, content, DATE_FORMAT(date_post, \'%d/%m/%Y à %Hh%imin%ss\') AS date_post_fr ';
         $query = $query . 'FROM articles ';
         $query = $query . 'ORDER BY ID DESC ';
-        $req = $bdd->query($query);
+        $req = $this->bdd->prepare($query);
         
         // ------
         $articles = array();
@@ -110,16 +82,9 @@ class ArticleManager {
     }
     public function saveArticle($postId, $postTitle, $postContent){
         
-        try
-        {
-            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_p4;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
-        }
-        catch(Exception $e)
-        {
-            die('Erreur : '.$e->getMessage());
-        }
+        
         $query = 'UPDATE articles SET title= :title, content= :content WHERE id= :id';
-        $req = $bdd->prepare($query);
+        $req = $this->bdd->prepare($query);
 
         $affectedLines = $req->execute(array(
             'id'=> $postId,
@@ -130,17 +95,10 @@ class ArticleManager {
     }
     public function saveNewArticle($postTitle, $postContent){
         
-        try
-        {
-            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_p4;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
-        }
-        catch(Exception $e)
-        {
-            die('Erreur : '.$e->getMessage());
-        }
+        
         $query = 'INSERT INTO articles (title, content, date_post) ';
         $query = $query . 'VALUES(:title, :content, NOW())';
-        $req = $bdd->prepare($query);
+        $req = $this->bdd->prepare($query);
 
         $affectedLines = $req->execute(array(
 
@@ -151,17 +109,10 @@ class ArticleManager {
     }
     public function insertArticle($postId, $postTitle, $postContent){
         
-        try
-        {
-            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_p4;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
-        }
-        catch(Exception $e)
-        {
-            die('Erreur : '.$e->getMessage());
-        }
+     
         $query = 'INSERT INTO articles (id, title, content, date_post) ';
         $query = $query . 'VALUES(:id, :title, :content, NOW())';
-        $req = $bdd->prepare($query);
+        $req = $this->bdd->prepare($query);
 
         $affectedLines = $req->execute(array(
             'id'=> $postId,
@@ -172,17 +123,10 @@ class ArticleManager {
     }
     public function deleteArticle($id){
 
-        try
-        {
-            $bdd = new PDO('mysql:host=localhost;port=3306;dbname=jelejhyx_p4;charset=utf8', 'jelejhyx_jelec', 'GqE2h7QxDf1grZHAwV');
-        }
-        catch(Exception $e)
-        {
-            die('Erreur : '.$e->getMessage());
-        }
+        
         $query ='DELETE FROM articles ';
         $query = $query . 'WHERE ID = :id';
-        $req = $bdd->prepare($query);
+        $req = $this->bdd->prepare($query);
         $req->execute(array(
             'id'=> $id
         ));
