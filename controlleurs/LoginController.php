@@ -4,8 +4,8 @@ require_once('./modeles/LoginManager.php');
 
 class LoginController {
 
-    public function __construct() {
-        $this->LoginManager = new LoginManager();
+    public function __construct($bdd) {
+        $this->LoginManager = new LoginManager($bdd);
 
     }
 

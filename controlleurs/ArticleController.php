@@ -6,9 +6,9 @@ require_once('./modeles/CommentManager.php');
 
 class ArticleController {
 
-    public function __construct() {
-        $this->ArticleManager = new ArticleManager();
-        $this->CommentManager = new CommentManager();
+    public function __construct($bdd) {
+        $this->ArticleManager = new ArticleManager($bdd);
+        $this->CommentManager = new CommentManager($bdd);
     }
 
     public function getArticles($pageIx) {

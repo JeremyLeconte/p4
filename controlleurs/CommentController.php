@@ -4,8 +4,8 @@ require_once('./modeles/CommentManager.php');
 
 class CommentController {
 
-    public function __construct() {
-        $this->CommentManager = new CommentManager();
+    public function __construct($bdd) {
+        $this->CommentManager = new CommentManager($bdd);
     }
 
     public function getByArticle() {
