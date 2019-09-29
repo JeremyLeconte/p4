@@ -10,14 +10,21 @@ ini_set('display_errors', 1);
 
 // Chargement des helpers
 require_once('./helpers/routerHelper.php');
+require_once('./helpers/dbHelper.php');
 
 // Chargement des contrôleurs
 require_once('./controlleurs/ArticleController.php');
 require_once('./controlleurs/CommentController.php');
 require_once('./controlleurs/LoginController.php');
-$ArticleController = new ArticleController();
-$CommentController = new CommentController();
-$LoginController = new LoginController();
+
+$bdd= DbHelper::connect();
+
+$ArticleController = new ArticleController($bdd);
+$CommentController = new CommentController($bdd);
+$LoginController = new LoginController($bdd);
+
+
+
 // Vérification du paramètre d'url
 if (array_key_exists('page', $_REQUEST)&& $_REQUEST['page']== 'login') {
     $LoginController->login();
