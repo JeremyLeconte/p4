@@ -8,15 +8,19 @@ class ArticleManager {
         $this->bdd = $bdd;
     }
 
-    public function getArticles($page = 2) {
+    public function getArticles($page = 1) {
         
           
         $query = 'SELECT ID, title, content, DATE_FORMAT(date_post, \'%d/%m/%Y à %Hh%i\') AS date_post_fr ';
         $query = $query . 'FROM articles ';
         $query = $query . 'ORDER BY ID ';
-        $query = $query . 'LIMIT '.(($page - 1) * 5).', 5';
-        $req = $this->bdd->query($query);
-            
+        $query = $query . 'LIMIT :offset, 5';    
+        $req = $this->bdd->prepare($query);
+        $offset = (($page - 1) * 5);
+        $req->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $req->execute();
+        
+        
         // ------
         $articles = array();
         // Hydratation
@@ -68,7 +72,7 @@ class ArticleManager {
         $query = $query . 'FROM articles ';
         $query = $query . 'ORDER BY ID DESC ';
         $req = $this->bdd->prepare($query);
-        
+        $req->execute();
         // ------
         $articles = array();
 

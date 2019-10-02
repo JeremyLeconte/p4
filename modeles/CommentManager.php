@@ -82,10 +82,11 @@ class CommentManager {
     public function getAll() {
        // Requete SQL
       
-       $query = 'SELECT Id, Name, Content, articleId, DATE_FORMAT(Date, \'%d/%m/%Y\') AS date ';
-       $query = $query . 'FROM commentaires ';
+       $query = 'SELECT DISTINCT c.Id, c.Name, c.Content, c.articleId, DATE_FORMAT(c.Date, \'%d/%m/%Y\') AS date, CASE WHEN s.ID IS NOT NULL THEN true ELSE false END as isReported ';
+       $query = $query . 'FROM commentaires c ';
+       $query = $query . 'LEFT JOIN signalement s ON s.CommentId = c.Id';
        $req = $this->bdd->prepare($query);
-       
+       $req->execute();
        // ------
        $Comments = array();
 
@@ -98,29 +99,29 @@ class CommentManager {
        return $Comments;
    }
    public function getById($id) {
-    // Requete SQL
- 
-    $query = 'SELECT Id, Name, Content, articleId, DATE_FORMAT(Date, \'%d/%m/%Y à %Hh%imin%ss\') AS date ';
-    $query = $query . 'FROM commentaires ';
-    $query = $query . 'WHERE Id = ?';
-    $req = $this->bdd->prepare($query);
-    $req->execute(array($id));
-
-     
-    // ------
+        // Requete SQL
     
-    $commentBdd = $req->fetch(PDO::FETCH_ASSOC);
-    
-    $comment = null;
-    $error = null;
-    if ($commentBdd == false) {
-        $error = true;
-    } else {
-        // Hydratation
-        $comment = new Comment($commentBdd);
-    }
+        $query = 'SELECT Id, Name, Content, articleId, DATE_FORMAT(Date, \'%d/%m/%Y à %Hh%imin%ss\') AS date ';
+        $query = $query . 'FROM commentaires ';
+        $query = $query . 'WHERE Id = ?';
+        $req = $this->bdd->prepare($query);
+        $req->execute(array($id));
 
-    return [$comment, $error];
+        
+        // ------
+        
+        $commentBdd = $req->fetch(PDO::FETCH_ASSOC);
+        
+        $comment = null;
+        $error = null;
+        if ($commentBdd == false) {
+            $error = true;
+        } else {
+            // Hydratation
+            $comment = new Comment($commentBdd);
+        }
+
+        return [$comment, $error];
     }
     public function deleteComment($id){
 
@@ -130,6 +131,16 @@ class CommentManager {
         $req = $this->bdd->prepare($query);
         $req->execute(array(
             'id'=> $id
+        ));
+    }
+    public function unreport($commentId){
+
+     
+        $query ='DELETE FROM signalement ';
+        $query = $query . 'WHERE CommentId = :CommentId';
+        $req = $this->bdd->prepare($query);
+        $req->execute(array(
+            'CommentId'=> $commentId
         ));
     }
 }

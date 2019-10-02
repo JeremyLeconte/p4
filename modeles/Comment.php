@@ -10,13 +10,16 @@ class Comment extends Model {
     private $Content;
     private $date;
     private $articleId;
-
+    private $isReported;
     // Constructor
     public function __construct($data) {
         $this->hydrate($data);
     }
 
     // Getters
+    public function getIsReported() {
+        return $this->isReported;
+    }
     public function getId() {
         return $this->Id;
     }
@@ -37,6 +40,9 @@ class Comment extends Model {
         return $this->articleId;
     }
     // Setters
+    public function setIsReported($pReported) {
+        $this->isReported = $pReported;
+    }
     public function setId($pId) {
         $this->Id = $pId;
     }
