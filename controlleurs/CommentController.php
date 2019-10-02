@@ -68,6 +68,10 @@ class CommentController {
         $this->CommentManager->deleteComment($postId);
         header('Location: index.php?page=InterfaceAdmin');
     }
+    public function unreport($commentId){
+        $this->CommentManager->unreport($commentId);
+        header('Location: index.php?page=InterfaceAdmin');
+    }
     function isLoggedIn() {
         return $_SESSION ["isLoggedIn"] == true;
     }
