@@ -47,7 +47,7 @@
                     </tr>
                 <thead>
                     <?php foreach($Comments as $Comment) { ?> 
-                        <tr>
+                        <tr class="<?= $Comment->getIsReported() == 1 ? 'comment-reported' : '' ?>">
                             <td class="tg-0lax"><?= htmlspecialchars($Comment->getName()); ?></td>
                             <td class="tg-0lax"><?= nl2br(htmlspecialchars(substr($Comment->getContent(), 0, 50))); ?></td>
                             <td class="tg-0lax"><?= $Comment->getdate(); ?></td>
@@ -58,6 +58,10 @@
                                 &nbsp;
                                 <a href="<?='index.php?page=deleteComment&id=' .$Comment->getId() ?>">
                                     <img src="./img/3844425-can-trash_110314.png" class="effacer "alt="effacer"/>
+                                </a>
+                                &nbsp;
+                                <a href="<?='index.php?page=unreport&id=' .$Comment->getId() ?>">
+                                    <img src="./img/check-mark.png" class="unreport "alt="unreport"/>
                                 </a>
                             </td>
                         </tr>
