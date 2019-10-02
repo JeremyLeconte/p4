@@ -102,6 +102,14 @@ if (array_key_exists('page', $_REQUEST)&& $_REQUEST['page']== 'login') {
                     header("Location: ./index.php?page=logginIn");
                 }   
                 break;
+            case "unreport":
+                if (array_key_exists('isLoggedIn', $_SESSION) && $_SESSION['isLoggedIn'] == true) {
+                    $id = RouterHelper::recupererID($_GET);
+                    $CommentController->unreport($id); 
+                } else {
+                    header("Location: ./index.php?page=logginIn");
+                }   
+            break;
             case "tableArticle":
                 if (array_key_exists('isLoggedIn', $_SESSION) && $_SESSION['isLoggedIn'] == true) {    
                     $ArticleController->getTableArticles(); 
