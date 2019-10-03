@@ -69,6 +69,7 @@ class CommentController {
         header('Location: index.php?page=InterfaceAdmin');
     }
     public function unreport($commentId){
+        
         $this->CommentManager->unreport($commentId);
         header('Location: index.php?page=InterfaceAdmin');
     }
