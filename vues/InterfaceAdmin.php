@@ -60,8 +60,8 @@
                                     <img src="./img/3844425-can-trash_110314.png" class="effacer "alt="effacer"/>
                                 </a>
                                 &nbsp;
-                                <a href="<?='index.php?page=unreport&id=' .$Comment->getId() ?>">
-                                    <img src="./img/check-mark.png" class="unreport "alt="unreport"/>
+                                <a href="<?='index.php?page=unreport&id=' .$Comment->getCommentId() ?>">
+                                    <img src="./img/check-mark.png" class="unreport" alt="unreport"/>
                                 </a>
                             </td>
                         </tr>
