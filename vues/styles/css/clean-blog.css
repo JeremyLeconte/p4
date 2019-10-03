@@ -12,6 +12,10 @@ body {
 .comment-reported {
   background-color: red;
 }
+img.unreport {
+  height: 22px;
+  vertical-align: top;
+}
 p {
   line-height: 1.5;
   margin: 30px 0;
