@@ -59,10 +59,12 @@
                                 <a href="<?='index.php?page=deleteComment&id=' .$Comment->getId() ?>">
                                     <img src="./img/3844425-can-trash_110314.png" class="effacer "alt="effacer"/>
                                 </a>
-                                &nbsp;
-                                <a href="<?='index.php?page=unreport&id=' .$Comment->getCommentId() ?>">
-                                    <img src="./img/check-mark.png" class="unreport" alt="unreport"/>
-                                </a>
+                                &nbsp;       
+                                <?php if ($Comment->getIsReported() == 1) { ?>
+                                    <a href="<?='index.php?page=unreport&id=' .$Comment->getId() ?>">
+                                        <img src="./img/check-mark.png" class="unreport" alt="unreport"/>
+                                    </a>
+                                <?php } ?>
                             </td>
                         </tr>
                     <?php } ?>
