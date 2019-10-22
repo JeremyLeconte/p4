@@ -105,7 +105,7 @@ if (array_key_exists('page', $_REQUEST)&& $_REQUEST['page']== 'login') {
             case "unreport":
                 if (array_key_exists('isLoggedIn', $_SESSION) && $_SESSION['isLoggedIn'] == true) {
                     $id = RouterHelper::recupererID($_GET);
-                    $CommentController->unreport($commentId); 
+                    $CommentController->unreport($id); 
                 } else {
                     header("Location: ./index.php?page=logginIn");
                 }   
@@ -140,8 +140,11 @@ if (array_key_exists('page', $_REQUEST)&& $_REQUEST['page']== 'login') {
                     header("Location: ./index.php?page=logginIn");
                 }            
                 break;
-            case "toto":              
-                $LoginController->toto();            
+            case "logOut":
+                $LoginController->logOut();
+            break;
+            case "identification":              
+                $LoginController->identification();            
                 break;
             case 'addComment' :
                 $id = RouterHelper::recupererID($_GET);
