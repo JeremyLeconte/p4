@@ -24,13 +24,16 @@
   <!-- TinyMCE Scripts -->
   <script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>
   <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=xlzlvu4cp48oo1z824oxwqvx5tfvshotu1qp2aqcg7a15fbg"></script> 
-  <script>tinymce.init({ selector:'#articleContent' });</script>
+  <script>tinymce.init({ selector:'#CommentContent', entity_encoding : "raw", force_p_newlines : false, forced_root_block : '' });</script>
 
 </head>  
+<?php require_once('./vues/partials/nav.php'); ?>    
   <body>
-    
+  
+  <div class="admin">
     
     <form action=<?="index.php?page=saveComment&id=" . $Comment->getId() ?> method="post"> 
+      
       <div class="form-group">
         <label for="CommentName">Name :</label>
         <input type="text" id="CommentName" name="name" value="<?= $Comment->getName() ?>" />
@@ -41,6 +44,6 @@
       </div>
 
       <input type="submit" value="Sauvegarder" />
-    
+  </div>  
   </body>
 </html>

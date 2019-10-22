@@ -1,5 +1,8 @@
 <?php require_once('./vues/partials/head.php'); ?>
+<?php require_once('./vues/partials/nav.php'); ?>
+
     <body>
+        <div class="admin">
         <H1>Bienvenue sur votre interface administrateur</H1>
         <div class="tg-wrap">
         <H3>Gérez ici vos articles à l'aide du tableau ci-dessous : </H3>
@@ -69,4 +72,5 @@
                         </tr>
                     <?php } ?>
             </table>
-        </div>                
+        </div>
+    </div>                  
