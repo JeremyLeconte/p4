@@ -4,6 +4,10 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-clean-blog/blob/master/LICENSE)
  */
 
+.admin {
+  padding-top: 75px;
+  background-color: #dcdada
+}
 body {
   font-size: 20px;
   color: #212529;
