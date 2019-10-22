@@ -54,18 +54,17 @@ class CommentManager {
     public function saveComment($postId, $postName, $postContent){
         
         
-        $query = 'INSERT INTO commentaires (Name, Content, articleId, Date) ';
-        $query = $query . 'VALUES(:name, :content, :id, NOW())';
+        $query = 'UPDATE commentaires SET Name= :Name, Content= :Content, WHERE id= :id ';
         $req = $this->bdd->prepare($query);
 
         $affectedLines = $req->execute(array(
             'id'=> $postId,
-            'name'=> $postName, 
-            'content'=> $postContent));
+            'Name'=> $postName, 
+            'Content'=> $postContent));
 
         return $affectedLines;
     }
-    
+
     //Signal
 
     public function signal($id){
