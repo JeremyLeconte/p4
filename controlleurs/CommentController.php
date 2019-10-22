@@ -32,9 +32,11 @@ class CommentController {
         if($affectedLines === false) {
             die('Impossible d\'ajouter le commentaire !');
         }
-    
+        
         else {
-            header('Location: index.php?page=article&id='.$id);
+           $comment= $this->CommentManager->getById($id)[0];
+            
+            header('Location: index.php?page=article&id='.$comment->getArticleId());
         }
     }
     public function getTableComments() {
@@ -51,8 +53,8 @@ class CommentController {
     }
     public function saveComment($postId){
         
-        $name = htmlspecialchars($_POST['name']);
-        $content = htmlspecialchars($_POST['content']);
+        $name = $_POST['name'];
+        $content = $_POST['content'];
         $affectedLines = $this->CommentManager->saveComment($postId, $name, $content);
     
         if($affectedLines === false) {

@@ -44,8 +44,8 @@ class ArticleController {
     }
     public function saveArticle($postId){
         
-        $Title = htmlspecialchars($_POST['Title']);
-        $Content = htmlspecialchars($_POST['Content']);
+        $Title = $_POST['Title'];
+        $Content = $_POST['Content'];
         $affectedLines = $this->ArticleManager->saveArticle($postId, $Title, $Content);
     
         if($affectedLines === false) {
@@ -58,8 +58,8 @@ class ArticleController {
     }
     public function saveNewArticle(){
         
-        $Title = htmlspecialchars($_POST['Title']);
-        $Content = htmlspecialchars($_POST['Content']);
+        $Title = $_POST['Title'];
+        $Content = $_POST['Content'];
         $affectedLines = $this->ArticleManager->saveNewArticle($Title, $Content);
     
         if($affectedLines === false) {

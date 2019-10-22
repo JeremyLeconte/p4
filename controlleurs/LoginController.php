@@ -9,7 +9,7 @@ class LoginController {
 
     }
 
-    public function toto() {               
+    public function identification() {               
 
         require_once('./vues/Login.php');
     }
@@ -18,6 +18,12 @@ class LoginController {
         return $_SESSION ["isLoggedIn"] == true;
     }
     
+    public function logOut() {
+        $_SESSION ["isLoggedIn"] = false;
+
+        header('Location: index.php');
+        
+    }
     public function login() {
 
         //recupération du login et du password via la methode posst
